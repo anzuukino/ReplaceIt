@@ -181,7 +181,9 @@ public class ReplaceBox extends JPanel {
         String originalRequest = "";
         if (isDirectlyCall) {
             HttpRequestResponse requestResponse = event.messageEditorRequestResponse().isPresent() ? event.messageEditorRequestResponse().get().requestResponse() : event.selectedRequestResponses().get(0);
-            originalRequest = requestResponse.request().toString();
+            originalRequest = !resultArea.getText().isEmpty()
+                    ? resultArea.getText()
+                    : requestResponse.request().toString();
         }else{
             originalRequest = textToBeSearch;
         }
